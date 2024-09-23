@@ -13,23 +13,23 @@ class Encrypter:
 
         ENCRYPTING_KEY = list(set(input("Введите последовательность различных символов до 8: ")))
 
-        self.Dict_Writer(ENCRYPTING_KEY);
+        self.__Dict_Writer(ENCRYPTING_KEY);
 
-        ENCRYPTED_LIST = self.FisrtStepOutput(INPUT_TEXT)
+        ENCRYPTED_LIST = self.__FisrtStepOutput(INPUT_TEXT)
 
-        SUMMA = self.Summator(ENCRYPTED_LIST)
+        SUMMA = self.__Summator(ENCRYPTED_LIST)
 
-        self.MinAndMaxOutput(SUMMA)
-        print(self.Decrypting(SUMMA))
+        self.__MinAndMaxOutput(SUMMA)
+        print(self.__Decrypting(SUMMA))
 
         for i, j in self.SYMB_DICT.items():
             print(i, j)
 
-    def Dict_Writer(self, ENCRYPTING_KEY: str):
+    def __Dict_Writer(self, ENCRYPTING_KEY: str):
         for i in range(0, len(ENCRYPTING_KEY)):
             self.SYMB_DICT[ENCRYPTING_KEY[i]] = i;
     
-    def FisrtStepOutput(self, INPUT_TEXT:str) -> list:
+    def __FisrtStepOutput(self, INPUT_TEXT:str) -> list:
         RESULT: list = []
         for i in INPUT_TEXT:
             if(i in self.SYMB_DICT.keys()):
@@ -38,28 +38,28 @@ class Encrypter:
         print(RESULT, INPUT_TEXT)
         return RESULT;
     
-    def Summator(self, ENCRYPTED_LIST: list) -> list:
+    def __Summator(self, ENCRYPTED_LIST: list) -> list:
         RESULT: list = []
         first = int(ENCRYPTED_LIST[-1]) + int(ENCRYPTED_LIST[1])
         if(first >= 10):
             
-            RESULT += self.Separator(first)
+            RESULT += self.__Separator(first)
         else: RESULT.append(first)
         
         for i in range(1, len(ENCRYPTED_LIST)-1):
             number = int(ENCRYPTED_LIST[i-1]) + int(ENCRYPTED_LIST[i+1])
             if(number >= 10):
-                RESULT += self.Separator(number)
+                RESULT += self.__Separator(number)
             else: RESULT.append(number)
 
         last = int(ENCRYPTED_LIST[-2]) + int(ENCRYPTED_LIST[0])
         if(last >= 10):
-            RESULT += self.Separator(last)
+            RESULT += self.__Separator(last)
         else: RESULT.append(last)
 
         return RESULT
     
-    def Separator(self, a:int) -> list:
+    def __Separator(self, a:int) -> list:
         result = []
         if(a > 0):
             first = str(a)[0]
@@ -73,11 +73,11 @@ class Encrypter:
             result.append(int(second))
         return result
 
-    def MinAndMaxOutput(self, a:list) -> None:
+    def __MinAndMaxOutput(self, a:list) -> None:
         print(a)
         print(f"Минимум - {min(a)} Максимум - {max(a)} Среднее - {sum(a)/len(a)}")
     
-    def Decrypting(self, a:list) -> str:
+    def __Decrypting(self, a:list) -> str:
         result: str = ""
         for i in a:
             for k, v in self.SYMB_DICT.items():
@@ -90,4 +90,5 @@ class Encrypter:
                 result += "*"
         return result;        
 test = Encrypter();
+
 test.Encrypt("тест тестировка тестировочка")
