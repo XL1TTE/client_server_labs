@@ -34,26 +34,26 @@ class Encrypter:
         for i in INPUT_TEXT:
             if(i in self.SYMB_DICT.keys()):
                 RESULT.append(f"{self.SYMB_DICT[i]}")
-            else: RESULT.append("5")
+            else: RESULT.append("-5")
         print(RESULT, INPUT_TEXT)
         return RESULT;
     
     def __Summator(self, ENCRYPTED_LIST: list) -> list:
         RESULT: list = []
         first = int(ENCRYPTED_LIST[-1]) + int(ENCRYPTED_LIST[1])
-        if(first >= 10):
+        if(first >= 10 or first <= -10):
             
             RESULT += self.__Separator(first)
         else: RESULT.append(first)
         
         for i in range(1, len(ENCRYPTED_LIST)-1):
             number = int(ENCRYPTED_LIST[i-1]) + int(ENCRYPTED_LIST[i+1])
-            if(number >= 10):
+            if(number >= 10 or number <= -10):
                 RESULT += self.__Separator(number)
             else: RESULT.append(number)
 
         last = int(ENCRYPTED_LIST[-2]) + int(ENCRYPTED_LIST[0])
-        if(last >= 10):
+        if(last >= 10 or last <= -10):
             RESULT += self.__Separator(last)
         else: RESULT.append(last)
 

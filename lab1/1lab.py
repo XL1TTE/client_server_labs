@@ -1,3 +1,3 @@
-name: str = input("Введите имя: ");
-
-print(f"Добро пожаловать на учёбу в ИКИТ - {name}!")
+a = int("AFA", 16)
+b = int("ABC", 16)
+print(a + b)
