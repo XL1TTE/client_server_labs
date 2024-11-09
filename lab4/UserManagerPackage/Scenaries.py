@@ -8,8 +8,12 @@ class HandleScenario:
 
     @staticmethod
     def Execute(Args):
-        if(Args.possition != None):
-            user = Users.Employee(Args.firstname, Args.lastname, Args.telephone, Args.address, Args.possition, Args.salary)
+        if(Args.position != None):
+            user = Users.Employee(Args.firstname, Args.lastname, Args.telephone, Args.address, Args.position, Args.salary)
+            user.writeLog()
+        elif(Args.order != None):
+            order = Order.Order(Args.order)
+            user = Users.Client(Args.firstname, Args.lastname, Args.telephone, Args.address, order)
             user.writeLog()
 
 class AutoScenario:

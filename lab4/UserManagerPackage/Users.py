@@ -17,7 +17,7 @@ class User(ABC):
 
     @abstractmethod
     def writeLog(self):
-        line = f"firstname: {self.firstname},lastname: {self.lastname}, telephone: {self.telephone},address: {self.address}"
+        line = f"firstname: {self.firstname}, lastname: {self.lastname}, telephone: {self.telephone}, address: {self.address}"
         output = FileManager(output_path="Employee.txt")
         output.WriteOneLine(line=line)
 
@@ -30,7 +30,7 @@ class Employee(User):
         self.salary = salary  
 
     def writeLog(self):
-        log = f"firstname: {self.firstname}, lastname: {self.lastname}, telephone: {self.telephone}, address: {self.address},position: {self.position}, salary: {self.salary}"
+        log = f"firstname: {self.firstname}, lastname: {self.lastname}, telephone: {self.telephone}, address: {self.address}, position: {self.position}, salary: {self.salary}"
         output = FileManager(output_path="Employee.txt")
         output.WriteOneLine(line=log)
         

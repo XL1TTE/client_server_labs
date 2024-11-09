@@ -36,9 +36,9 @@ class UserManagerArgParser:
         )
         
         self.parser.add_argument(
-            "-possition",
+            "-position",
             type=str,
-            help="Employee's possition."
+            help="Employee's position."
         )
         self.parser.add_argument(
             "-salary",
