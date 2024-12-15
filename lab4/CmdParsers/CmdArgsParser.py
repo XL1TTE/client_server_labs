@@ -60,9 +60,12 @@ class UserManagerArgParser:
             print("Executed in auto mode.")
             Scenaries.AutoScenario.Execute(self.args)
         elif self.args.mode == 'handle':
-            if not all([self.args.firstname, self.args.lastname, self.args.telephone]):
-                print("Error: First name, last name, and telephone are required in handle mode.")
+            if not all([self.args.firstname, self.args.lastname, self.args.telephone,]):
+                print("Error: First name, last name, and telephone and position/order are required in handle mode.")
                 return
+            if (self.args.position == None and self.args.order == None):
+                    print("Error: Position/order are required in handle mode.")
+                    return
             print("Executed in handle mode.")
             Scenaries.HandleScenario.Execute(self.args)
         else:

@@ -41,6 +41,6 @@ class Client(User):
         self.order = Order
 
     def writeLog(self):
-        output = FileManager(output_path="Employee.txt")
+        output = FileManager(output_path="Clients.txt")
         output.WriteOneLine(
             line=f"firstname: {self.firstname}, lastname: {self.lastname}, telephone: {self.telephone}, address: {self.address}, order: {self.order.number}")
