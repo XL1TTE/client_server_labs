@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <h1>Books Archive</h1>
+</head>
+<body>
+    {% for book in Books %}
+        <h4>{{book.id}}. {{book.title}} </h4>
+    {% endfor %}
+    <a href="{% url 'add_book' %}">На страницу добавления книг.</a>
+</body>
+</html>
