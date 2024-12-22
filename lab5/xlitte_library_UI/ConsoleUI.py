@@ -76,9 +76,13 @@ def __rent_book__(library_system: Library):
         clear_console()
         book = library_system.get_entity_by_id(book_id, Library.Book, 'books')
         if(not book.is_rented):
-            library_system.rent_book_to_user(user_id, book_id)
+            
             user = library_system.get_entity_by_id(user_id, Library.User, 'users')
-            print(f"Книга под номером {book_id} успешно арендована! \nПриятного чтения {user.first_name}.")
+            if(user != None):
+                library_system.rent_book_to_user(user_id, book_id)
+                print(f"Книга под номером {book_id} успешно арендована! \nПриятного чтения {user.first_name}.")
+            else:
+                print("Такого пользователя не существует!")
         else:
             print("Данная книга уже арендована другим пользователем.")
     except:
