@@ -7,6 +7,6 @@
     {% for book in Books %}
         <h4>{{book.id}}. {{book.title}} </h4>
     {% endfor %}
-    <a href="{% url 'add_book' %}">На страницу добавления книг.</a>
+    <a href="{% url 'load_add_book_form' %}">На страницу добавления книг.</a>
 </body>
 </html>

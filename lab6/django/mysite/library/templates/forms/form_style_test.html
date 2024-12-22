@@ -1,0 +1,13 @@
+
+{% load static %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'add_book_page_styles.css' %}">
+</head>
+
+{% for field in form %}
+<div>
+    <input type="text" value="{{ field.value|default:'' }}" />
+    {{ field.errors }}
+</div>
+{% endfor %}

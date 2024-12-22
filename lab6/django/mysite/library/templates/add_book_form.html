@@ -1,0 +1,58 @@
+<!-- add_book.html -->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавить книгу</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'add_book_page_styles.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+    <div class="background"></div>
+    <header>
+
+    </header>
+
+    <main>
+        <div class="AddingForm_container">
+
+            <div class="AddingForm_label_container">
+                <label style="font-size: 36px; font-weight: bold; color: #2351e7;">Добавить книгу</label>
+                <label style="font-size: 14px; color: #84a1ff;">Всем хорошим во мне я обязан книгам.</label>
+            </div>
+
+            <form action="add_book" method="post" class="AddingForm_form">
+                {% csrf_token %}
+                <div class="form_inputs_container">
+                    {% for field in form %}
+
+                    {{ field.as_widget }}
+                    {{ field.errors }}
+
+                    {% endfor %}
+                </div>
+                <button type="submit" class="rounded_green_button">Добавить</button>
+            </form>
+
+            <div style="padding: 20px;">
+                <label class="redirect_label">Хотите вернуться в архив? </label>
+                <a href="{% url 'book_archive' %}" class="AddingForm_redirect_link">Архив</a>
+            </div>
+
+        </div>
+        
+
+    </main>
+
+    <footer>
+        <p style="margin-left: 5px;">© 2024 xlitte</p>
+    </footer>
+
+</body>
+</html> 
